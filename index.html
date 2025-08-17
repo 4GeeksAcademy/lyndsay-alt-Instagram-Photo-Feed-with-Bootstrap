@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/f3bac6ded8.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        .card-header-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            padding: 0.75rem 1rem;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .card-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .square-img {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .likes-bar {
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-1" href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#newPostModal">
+                                <span class="btn btn-success">Create a new post</span>
+                            </a>
+                            <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="newPostModalLabel">Create a new post</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="postCaption" class="form-label">Caption</label>
+                                                <textarea class="form-control" id="postCaption" rows="3"
+                                                    placeholder="Write your caption..."></textarea>
+                                            </div>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-outline-primary w-2" type="button">
+                                                    <i class="fa-solid fa-image"></i> Add Photo
+                                                </button>
+                                                <button class="btn btn-outline-secondary w-2" type="button">
+                                                    <i class="fa-solid fa-location-dot"></i> Add Location
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-success">Publish</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-gear"></i> </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="#">Accesibility</a>
+                                <a class="dropdown-item" href="#">Privacy and Data</a>
+                                <hr class="dropdown-divider">
+                                </hr>
+                                <a class="dropdown-item link-danger" href="#">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="d-flex justify-content-center align-items-center">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false"><i class="fa-solid fa-table-cells"></i></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                        aria-selected="false"><i class="fa-solid fa-square"></i></button>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                tabindex="0">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="container py-4">
+                        <div class="row row-cols-1 row-cols-sm-3 g-3 photo-grid justify-content-center">
+                            <img src="https://cdn.pixabay.com/photo/2015/03/09/18/34/beach-666122_1280.jpg"
+                                alt="Photo 1" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2017/01/16/19/54/sunset-1985086_1280.jpg"
+                                alt="Photo 2" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2019/06/20/06/03/beach-4286271_1280.jpg"
+                                alt="Photo 3" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2013/10/09/02/26/beach-192975_1280.jpg"
+                                alt="Photo 4" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2018/04/05/14/10/boat-3292934_1280.jpg"
+                                alt="Photo 5" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2020/08/16/19/29/surf-5493649_1280.jpg"
+                                alt="Photo 6" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2018/08/20/15/31/palm-trees-3619180_1280.jpg"
+                                alt="Photo 7" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2016/11/14/22/18/beach-1824855_1280.jpg"
+                                alt="Photo 8" class="col">
+                            <img src="https://cdn.pixabay.com/photo/2017/12/20/10/48/portugal-3029665_1280.jpg"
+                                alt="Photo 9" class="col">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                tabindex="0">
+
+                <body class="p-4">
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 36rem;">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Toes in the Sand</h5>
+                                <h6 class="card-date">08/25</h6>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2017/07/20/16/42/feet-2522874_1280.jpg"
+                                class="card-img-top square-img" alt="Card image">
+                            <div class="likes-bar text-muted">
+                                <h4>125 Likes</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 36rem;">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Sun Selfie</h5>
+                                <h6 class="card-date">08/25</h6>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2024/01/31/19/25/sunset-8544672_1280.jpg"
+                                class="card-img-top square-img" alt="Card image">
+                            <div class="likes-bar text-muted">
+                                <h4>125 Likes</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 36rem;">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Dancing Queen</h5>
+                                <h6 class="card-date">08/25</h6>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2020/09/16/10/17/dancer-5576002_1280.jpg"
+                                class="card-img-top square-img" alt="Card image">
+                            <div class="likes-bar text-muted">
+                                <h4>125 Likes</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 36rem;">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Sunset</h5>
+                                <h6 class="card-date">08/25</h6>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2023/03/15/18/14/sea-7855153_1280.jpg"
+                                class="card-img-top square-img" alt="Card image">
+                            <div class="likes-bar text-muted">
+                                <h4>125 Likes</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 36rem;">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Oasis</h5>
+                                <h6 class="card-date">08/25</h6>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2021/02/02/12/34/resort-5973816_1280.jpg"
+                                class="card-img-top square-img" alt="Card image">
+                            <div class="likes-bar text-muted">
+                                <h4>125 Likes</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 36rem;">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Sea Life</h5>
+                                <h6 class="card-date">08/25</h6>
+                            </div>
+                            <img src="https://cdn.pixabay.com/photo/2016/11/05/15/03/philippines-1800409_1280.jpg"
+                                class="card-img-top square-img" alt="Card image">
+                            <div class="likes-bar text-muted">
+                                <h4>125 Likes</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
